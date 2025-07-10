@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64754f41-4729-4a5b-8697-467e4ee72c53" name="Changes" comment="NA -1 - Create Projects with add,view,edit users">
-      <change afterPath="$PROJECT_DIR$/regions/data/cities.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regions/data/provinces.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regions/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regions/urls_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usages/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usages/urls_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd4f9193-86a6-4710-974b-d1aa105af648.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fd4f9193-86a6-4710-974b-d1aa105af648.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FleetCore/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FleetCore/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FleetCore/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FleetCore/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regions/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/regions/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/regions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/regions/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="64754f41-4729-4a5b-8697-467e4ee72c53" name="Changes" comment="NA -1 - Create Projects with add,view,edit users" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,7 +115,7 @@
       <workItem from="1752041142772" duration="1812000" />
       <workItem from="1752132045060" duration="13724000" />
       <workItem from="1752155058554" duration="8000" />
-      <workItem from="1752155078982" duration="1090000" />
+      <workItem from="1752155078982" duration="1408000" />
     </task>
     <task id="LOCAL-00001" summary="NA -1 - Create Projects with add,view,edit users">
       <option name="closed" value="true" />

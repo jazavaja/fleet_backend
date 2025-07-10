@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, status, permissions, filters
 from rest_framework.decorators import api_view, permission_classes
@@ -141,3 +142,29 @@ class GroupListView(generics.ListCreateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [CustomUserPermission]
+
+
+class GroupDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = GroupSerializer
+    permission_classes = [CustomUserPermission]
+    queryset = Group.objects.all()
+
+
+@api_view(['GET', 'POST'])
+def group_permissions(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+
+    if request.method == 'GET':
+        permissions = list(group.permissions.values_list('id', flat=True))
+        return Response({'permissions': permissions})
+
+    elif request.method == 'POST':
+        perm_ids = request.data.get('permissions', [])
+        group.permissions.set(perm_ids)
+        return Response({'success': True})
+
+
+@api_view(['GET'])
+def get_all_permissions(request):
+    permissions = Permission.objects.all().values('id', 'name', 'codename')
+    return Response(list(permissions))

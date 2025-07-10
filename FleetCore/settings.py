@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-03s44#g0n(a_qi6dthlats&0#2na255=asm9kvp3w*)r!+)nn8
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
@@ -43,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    "accounts"
+    "accounts",
+    'regions.apps.RegionsConfig',
 ]
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -57,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+INIT_PROVINCE_CITY = False
 ROOT_URLCONF = 'FleetCore.urls'
 
 TEMPLATES = [
@@ -77,7 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'FleetCore.wsgi.application'
-APPEND_SLASH=False
+APPEND_SLASH = False
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -88,7 +87,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -128,7 +126,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

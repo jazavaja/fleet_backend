@@ -39,12 +39,6 @@ class City(models.Model):
 
 
 class ActivityArea(models.Model):
-    province = models.ForeignKey(
-        Province,
-        on_delete=models.CASCADE,
-        verbose_name='استان',
-        related_name='activity_areas'
-    )
     city = models.ForeignKey(
         City,
         on_delete=models.CASCADE,
@@ -62,10 +56,10 @@ class ActivityArea(models.Model):
         verbose_name_plural = 'مناطق فعالیت'
         constraints = [
             models.UniqueConstraint(
-                fields=['province', 'city', 'area'],
+                fields=['city', 'area'],
                 name='unique_activity_area'
             )
         ]
 
     def __str__(self):
-        return f"{self.area} - {self.city.name} - {self.province.name}"
+        return f"{self.area} - {self.city.name}"

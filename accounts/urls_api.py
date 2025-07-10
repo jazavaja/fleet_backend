@@ -3,7 +3,8 @@ from django.urls import path
 from .views_api import (
     RegisterUserAPIView, LoginAPIView, LogoutAPIView,
     ChangePasswordAPIView, UserProfileAPIView,
-    UserListAPIView, UserDetailAPIView, user_me_view, GroupListView
+    UserListAPIView, UserDetailAPIView, user_me_view, GroupListView, GroupDetailAPIView, group_permissions,
+    get_all_permissions
 )
 
 urlpatterns = [
@@ -16,4 +17,8 @@ urlpatterns = [
     path('user/me', user_me_view, name='user_me_view'),
     path('users/<int:pk>/', UserDetailAPIView.as_view(), name='user-detail'),
     path('groups/', GroupListView.as_view(), name='group-list'),
+    path('groups/<int:pk>/', GroupDetailAPIView.as_view(), name='group-detail'),
+    path('groups/<int:group_id>/permissions/', group_permissions),
+    path('permissions/', get_all_permissions),
+
 ]

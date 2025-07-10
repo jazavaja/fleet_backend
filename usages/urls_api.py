@@ -1,9 +1,10 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import UsageTypeViewSet
+
+router = DefaultRouter()
+router.register(r'', UsageTypeViewSet, basename='usage-type')
 
 urlpatterns = [
-    path('provinces/', views.get_provinces, name='get_provinces'),
-    path('cities/', views.get_cities, name='get_cities'),
-    path('areas/', views.activity_area_list, name='activity_area_list'),
-    path('areas/<int:pk>/', views.activity_area_detail, name='activity_area_detail'),
+    path('', include(router.urls)),
 ]

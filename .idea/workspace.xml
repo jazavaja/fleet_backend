@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64754f41-4729-4a5b-8697-467e4ee72c53" name="Changes" comment="NA -1 - Create Projects with add,view,edit users">
+      <change afterPath="$PROJECT_DIR$/sectors/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd4f9193-86a6-4710-974b-d1aa105af648.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fd4f9193-86a6-4710-974b-d1aa105af648.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FleetCore/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FleetCore/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FleetCore/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FleetCore/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usages/urls_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/usages/urls_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sectors/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sectors/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sectors/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sectors/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sectors/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sectors/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +50,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Javad/PycharmProjects/FleetCoreMain/FleetCore/usages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Javad/PycharmProjects/FleetCoreMain/FleetCore/sectors&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -61,6 +63,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Javad\PycharmProjects\FleetCoreMain\FleetCore\sectors" />
       <recent name="C:\Users\Javad\PycharmProjects\FleetCoreMain\FleetCore\usages" />
       <recent name="C:\Users\Javad\PycharmProjects\FleetCoreMain\FleetCore\regions\data" />
     </key>
@@ -124,7 +127,10 @@
       <workItem from="1752132045060" duration="13724000" />
       <workItem from="1752155058554" duration="8000" />
       <workItem from="1752155078982" duration="2580000" />
-      <workItem from="1752165312016" duration="6591000" />
+      <workItem from="1752165312016" duration="6613000" />
+      <workItem from="1752232107958" duration="603000" />
+      <workItem from="1752247573356" duration="5695000" />
+      <workItem from="1752320865887" duration="3431000" />
     </task>
     <task id="LOCAL-00001" summary="NA -1 - Create Projects with add,view,edit users">
       <option name="closed" value="true" />

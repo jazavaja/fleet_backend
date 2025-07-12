@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "accounts",
     'django_filters',
     'regions.apps.RegionsConfig',
-    'usages'
+    'usages',
+    'sectors'
 ]
 AUTH_USER_MODEL = 'accounts.User'
 

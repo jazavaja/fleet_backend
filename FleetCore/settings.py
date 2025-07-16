@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'regions.apps.RegionsConfig',
     'usages',
     'sectors',
-    'fleets'
+    'fleets',
+    'core'
 ]
 AUTH_USER_MODEL = 'accounts.User'
 MEDIA_URL = '/media/'

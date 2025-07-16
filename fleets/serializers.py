@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from fleets.models import NavyType, NavyMain, NavyBrand, NavySize
+from fleets.models import NavyType, NavyMain, NavyBrand, NavySize, NavyMehvar
 
 
 class NavyTypeSerializer(serializers.ModelSerializer):
@@ -33,10 +33,24 @@ class NavyBrandSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'logo', 'sizes', 'size_ids']
 
 
+class NavyMehvarSerializer(serializers.ModelSerializer):
+    sizes = NavySizeSerializer(many=True, read_only=True)
+
+    size_ids = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=NavySize.objects.all(), write_only=True, source='sizes'
+    )
+
+    class Meta:
+        model = NavyMehvar
+        fields = ['id', 'name', 'logo', 'sizes', 'size_ids']
+
+
 class NavyMainSerializer(serializers.ModelSerializer):
     type = NavyTypeSerializer(read_only=True)
     size = NavySizeSerializer(read_only=True)
     brand = NavyBrandSerializer(read_only=True)
+    mehvar = NavyMehvarSerializer(read_only=True)
 
     type_id = serializers.PrimaryKeyRelatedField(
         queryset=NavyType.objects.all(), source='type', write_only=True, required=False
@@ -47,7 +61,10 @@ class NavyMainSerializer(serializers.ModelSerializer):
     brand_id = serializers.PrimaryKeyRelatedField(
         queryset=NavyBrand.objects.all(), source='brand', write_only=True, required=False
     )
+    mehvar_id = serializers.PrimaryKeyRelatedField(
+        queryset=NavyMehvar.objects.all(), source='mehvar', write_only=True, required=False
+    )
 
     class Meta:
         model = NavyMain
-        fields = ['id', 'name', 'type', 'size', 'brand', 'type_id', 'size_id', 'brand_id', 'tip']
+        fields = ['id', 'name', 'type', 'size', 'brand', 'mehvar', 'type_id', 'size_id', 'brand_id', 'mehvar_id', 'tip']

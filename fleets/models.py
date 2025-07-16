@@ -29,6 +29,12 @@ class NavyBrand(models.Model):
         return self.name
 
 
+class NavyMehvar(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name='محور ناوگان')
+    logo = models.ImageField(upload_to='files/navy-mehvar', verbose_name='لوگو محور ناوگان')
+    sizes = models.ManyToManyField(NavySize, related_name='mehvars')  # Many-to-many
+
+
 class NavyMain(models.Model):
     name = models.CharField(max_length=100, verbose_name='نام اصلی ناوگان')
     type = models.ForeignKey(NavyType, on_delete=models.SET_NULL, null=True, blank=True, related_name='navies_by_type',
@@ -37,12 +43,14 @@ class NavyMain(models.Model):
                              verbose_name='سایز')
     brand = models.ForeignKey(NavyBrand, on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='navies_by_brand', verbose_name='برند')
+    mehvar = models.ForeignKey(NavyMehvar, on_delete=models.SET_NULL, null=True, blank=True,
+                               related_name='navies_by_mehvar', verbose_name='محور')
     tip = models.CharField(max_length=100, verbose_name='تیپ ناوگان')
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['type', 'size', 'brand', 'tip'],
+                fields=['type', 'size', 'brand', 'tip','mehvar'],
                 name='unique_navy_combination'
             )
         ]

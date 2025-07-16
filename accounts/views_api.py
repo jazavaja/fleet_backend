@@ -6,10 +6,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, status, permissions, filters
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from core.permissions import ModelPermissionMap, GroupPermissionAccess
 from .permissions import CustomUserPermission
 from .serializers import RegisterSerializer, LoginSerializer, ChangePasswordSerializer, UserSerializer, GroupSerializer
 
@@ -20,13 +22,14 @@ User = get_user_model()
 @permission_classes([IsAuthenticated])
 def user_me_view(request):
     user = request.user
+
     return Response({
         "id": user.id,
         "first_name": user.first_name,
         "last_name": user.last_name,
         "phone": user.phone,
         "is_staff": user.is_staff,
-        # هر فیلد دلخواه دیگه هم می‌تونی بدی
+        "permissions": list(user.get_all_permissions()),  # 👈 لیست دسترسی‌ها به صورت "app_label.codename"
     })
 
 
@@ -50,6 +53,7 @@ class LoginAPIView(generics.GenericAPIView):
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                "permissions": list(user.get_all_permissions()),
             })
         return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -98,9 +102,6 @@ class UserProfileAPIView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 
-from rest_framework.pagination import PageNumberPagination
-
-
 class CustomPagination(PageNumberPagination):
     page_size = 10  # تعداد آیتم‌ها در هر صفحه
 
@@ -113,7 +114,7 @@ class UserListAPIView(generics.ListCreateAPIView):
     permission_classes = [CustomUserPermission]
     queryset = User.objects.all().order_by('-date_joined')
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
-    pagination_class = CustomPagination
+    pagination_class = [IsAuthenticated, ModelPermissionMap]
 
     def perform_create(self, serializer):
         if serializer.validated_data.get('is_superuser') and not self.request.user.is_superuser:
@@ -134,23 +135,24 @@ class UserListAPIView(generics.ListCreateAPIView):
 
 class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
-    permission_classes = [CustomUserPermission]
+    permission_classes = [IsAuthenticated, ModelPermissionMap]
     queryset = User.objects.all()
 
 
 class GroupListView(generics.ListCreateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [CustomUserPermission]
+    permission_classes = [IsAuthenticated, ModelPermissionMap]
 
 
 class GroupDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GroupSerializer
-    permission_classes = [CustomUserPermission]
     queryset = Group.objects.all()
+    permission_classes = [IsAuthenticated, ModelPermissionMap]
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated, GroupPermissionAccess])
 def group_permissions(request, group_id):
     group = get_object_or_404(Group, id=group_id)
 

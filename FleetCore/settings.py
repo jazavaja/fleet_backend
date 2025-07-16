@@ -12,25 +12,32 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Initialise environment variables
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-03s44#g0n(a_qi6dthlats&0#2na255=asm9kvp3w*)r!+)nn8'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-# ]
+CORS_ALLOW_ALL_ORIGINS = env.bool('CORS_ALLOW_ALL_ORIGINS', default=True)
+# CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
 
 # Application definition
 
@@ -89,10 +96,7 @@ APPEND_SLASH = False
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
 }
 
 # Password validation

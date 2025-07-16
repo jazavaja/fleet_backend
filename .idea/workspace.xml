@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="64754f41-4729-4a5b-8697-467e4ee72c53" name="Changes" comment="NA -2- Activity works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FleetCore/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FleetCore/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +130,7 @@
       <workItem from="1752506426952" duration="2149000" />
       <workItem from="1752559491095" duration="4238000" />
       <workItem from="1752651333107" duration="7698000" />
-      <workItem from="1752683366183" duration="5189000" />
+      <workItem from="1752683366183" duration="6550000" />
     </task>
     <task id="LOCAL-00001" summary="NA -1 - Create Projects with add,view,edit users">
       <option name="closed" value="true" />

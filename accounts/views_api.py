@@ -111,10 +111,10 @@ class UserListAPIView(generics.ListCreateAPIView):
     لیست کاربران با امکان جستجو و فیلتر
     """
     serializer_class = UserSerializer
-    permission_classes = [CustomUserPermission]
+    permission_classes = [IsAuthenticated, ModelPermissionMap]
     queryset = User.objects.all().order_by('-date_joined')
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
-    pagination_class = [IsAuthenticated, ModelPermissionMap]
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         if serializer.validated_data.get('is_superuser') and not self.request.user.is_superuser:

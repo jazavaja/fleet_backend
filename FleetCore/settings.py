@@ -39,6 +39,8 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 CORS_ALLOW_ALL_ORIGINS = env.bool('CORS_ALLOW_ALL_ORIGINS', default=True)
 # CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
 
+INIT_PROVINCE_CITY = env.bool('INIT_PROVINCE_CITY',False)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,7 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-INIT_PROVINCE_CITY = False
+
 ROOT_URLCONF = 'FleetCore.urls'
 
 TEMPLATES = [
